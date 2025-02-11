@@ -145,10 +145,8 @@ export function MemoriesList({ memories }: MemoriesListProps) {
         {filteredAndSortedMemories.length > 0 ? (
           <div className="max-w-5xl mx-auto">
             {Object.entries(groupedMemories)
-              .sort(([yearA], [yearB]) => 
-                sortOrder === "newest" 
-                  ? Number(yearB) - Number(yearA) 
-                  : Number(yearA) - Number(yearB)
+              .sort(([yearA], [yearB]) =>
+                sortOrder === "newest" ? Number(yearB) - Number(yearA) : Number(yearA) - Number(yearB)
               )
               .map(([year, yearMemories]) => (
                 <div key={year} className="mb-16">

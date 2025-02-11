@@ -20,9 +20,8 @@ export function useQueryParams() {
     const value = searchParams.get("sort");
     return value === "newest" || value === "oldest" ? value : "newest";
   }, [searchParams]);
-
   const setParams = useCallback(
-    (newParams: Partial<T>) => {
+    (newParams: Partial<{ filter: FilterType; sort: SortType }>) => {
       const params = new URLSearchParams(searchParams.toString());
 
       Object.entries(newParams).forEach(([key, value]) => {

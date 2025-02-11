@@ -3,19 +3,17 @@ import { getMemoriesByUser } from "@/lib/services/memoryService";
 import { getUserById } from "@/lib/services/userService";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-export default async function UserMemoriesPage({
-  params,
-}: {
-  params: { userId: string };
-}) {
-  const { userId } = await params;
 
-  if (!userId) {
+export default async function UserMemoriesPage({ params }: { params: Promise<{ userId: string }> }) {
+  const resolvedParams = await params; 
+
+  if (!resolvedParams?.userId) {
     notFound();
   }
 
-  const user = await getUserById(userId);
+  const userId = resolvedParams.userId;
 
+  const user = await getUserById(userId);
   if (!user) {
     notFound();
   }
