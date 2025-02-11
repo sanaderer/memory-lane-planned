@@ -48,7 +48,7 @@ export function ProfileHeader({ user, onSort, onFilter, onAddMemory, onClearFilt
   return (
     <div className="relative pt-2 px-4">
       <div className="h-48 relative overflow-hidden rounded-2xl">
-        <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-900 via-fuchsia-800 to-fuchsia-700" />
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-900 via-stone-800 to-stone-700" />
       </div>
 
       <div className="relative px-6">

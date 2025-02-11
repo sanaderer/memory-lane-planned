@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Memory Lane
 
-## Getting Started
+Memory Lane is a web application designed to help users create, store, and share their cherished memories with friends and family. This platform allows users to organize their memories chronologically, providing a structured way to relive past moments in an intuitive and visually appealing format.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **User Selection**: Users can choose a profile to access their memory lane.
+- **Memory Lane**: Displays a chronological collection of events.
+- **Memory Cards**: Each event includes a title, description, timestamp, and at least one image.
+- **Sorting & Filtering**: Users can sort memories by date and filter them by time periods.
+- **Memory Details & Editing**: Users can view detailed information about a memory and update or delete it.
+- **Memory Creation**: Users can add new memories with a title, description, date, location, and image upload functionality.
+- **Sharing**: Users can copy and share their memory lane URL with others.
+- **Error Handling**: A custom 404 page ensures smooth navigation.
+
+## Tech Stack & Justification
+
+### **Framework & Language**
+
+- **Next.js (App Router)**: Chosen for its improved performance with server components, simplified routing, and built-in optimizations.
+- **TypeScript**: Provides type safety and improves maintainability, reducing potential runtime errors.
+
+### **Styling & UI**
+
+- **Tailwind CSS**: Enables rapid development with utility-first styling, ensuring a clean and consistent design.
+- **ShadCN**: Provides accessible and well-designed UI components, improving development speed.
+- **Framer Motion**: Used for smooth animations, enhancing user experience.
+
+### **State Management & API**
+
+- **Zustand**: A lightweight and flexible state management library that simplifies global state handling.
+- **Next.js Services**: Utilized for API handling, ensuring a streamlined backend structure directly within the Next.js app.
+
+### **Backend & Storage**
+
+- **Supabase (Postgres & Storage)**: Selected for its ease of use, scalability, and native support for Postgres and file storage.
+
+## Installation & Running the Project
+
+1. Clone this repository:
+
+   ```sh
+   git clone https://github.com/your-github-username/memory-lane.git
+   cd memory-lane
+   ```
+
+2. Install dependencies:
+
+   ```sh
+   npm install
+   ```
+
+3. Run the API:
+
+   ```sh
+   npm run serve:api
+   ```
+
+4. Start the development server:
+
+   ```sh
+   npm run dev
+   ```
+
+5. Open your browser and visit `http://localhost:3000`.
+
+## Project Structure
+
+```
+/memory-lane
+├── components
+│   ├── layout (Layout components)
+│   ├── memory (Memory components)
+│   ├── ui (Reused UI elements like buttons, modals, etc.)
+│   ├── user (User components)
+├── app
+│   ├── users
+│   │   ├── [userId].tsx (User Memory Lane Page)
+│   │   ├── _layout.tsx (Root Layout)
+│   ├── _layout.tsx (Root Layout)
+│   ├── not-found.tsx (404 Page)
+│   ├── page.tsx (Home Page - User Selection)
+├── hooks (Custom hooks)
+│   ├── useMemoryEdit.ts (Memory editing hook)
+│   ├── useQueryParams.ts (Query params hook)
+│   ├── use-toast.ts (Toast hook)
+├── lib
+│   ├── services (API calls and data handling)
+│   ├── supabase (Supabase client initialization)
+│   ├── utils (Helper functions)
+│   ├── validations (Validation functions)
+├── store (State management - Zustand)
+├── public (Static assets)
+└── styles (Global styles)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Screenshots
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<video width="640" height="360" controls>
+  <source src="./public/screen-capture.mov" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## API Updates
 
-## Learn More
+The API has been modified to:
 
-To learn more about Next.js, take a look at the following resources:
+- Support creating, retrieving, updating, and deleting memories.
+- Store images in Supabase Storage and metadata in Supabase Postgres.
+- Handle user data retrieval.
+- Utilize Next.js service functions for efficient backend operations.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Authentication is **not** required for this iteration.
+- The mockup provided was used as inspiration, with UX improvements added.
+- Users can interact with the platform without persistent login.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project is deployed on **Vercel**, making it accessible for easy testing and review.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+Thank you for reviewing my submission! 🚀

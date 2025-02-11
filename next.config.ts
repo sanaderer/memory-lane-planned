@@ -4,16 +4,16 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'your-supabase-bucket-url.com',
+        protocol: "https",
+        hostname: "your-supabase-bucket-url.com",
       },
       {
         protocol: "https",
         hostname: "media.licdn.com",
       },
       {
-        protocol: 'https',
-        hostname: '**',
+        protocol: "https",
+        hostname: "**",
       },
       {
         protocol: "https",
@@ -22,8 +22,13 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "localhost",
-      }
+      },
     ],
+  },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "10mb",
+    },
   },
 };
 

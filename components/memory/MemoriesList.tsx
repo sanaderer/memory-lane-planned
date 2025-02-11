@@ -36,15 +36,15 @@ export function MemoriesList({ memories }: MemoriesListProps) {
             <Skeleton className="w-full h-48" />
             <div className="container mx-auto px-4">
               <div className="relative -mt-16 pb-6">
-                <div className="flex justify-between items-end">
-                  <div className="flex items-end gap-4">
+                <div className="flex justify-between">
+                  <div className="flex flex-col items-start space-y-4">
                     <Skeleton className="h-32 w-32 rounded-full border-4 border-background" />
-                    <div className="space-y-2 mb-2">
+                    <div className="space-y-2">
                       <Skeleton className="h-8 w-48" />
                       <Skeleton className="h-4 w-32" />
                     </div>
                   </div>
-                  <div className="flex gap-4 mb-2">
+                  <div className="flex gap-4 self-end mb-2">
                     <Skeleton className="h-10 w-24" />
                     <Skeleton className="h-10 w-24" />
                     <Skeleton className="h-10 w-32" />
@@ -145,7 +145,11 @@ export function MemoriesList({ memories }: MemoriesListProps) {
         {filteredAndSortedMemories.length > 0 ? (
           <div className="max-w-5xl mx-auto">
             {Object.entries(groupedMemories)
-              .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
+              .sort(([yearA], [yearB]) => 
+                sortOrder === "newest" 
+                  ? Number(yearB) - Number(yearA) 
+                  : Number(yearA) - Number(yearB)
+              )
               .map(([year, yearMemories]) => (
                 <div key={year} className="mb-16">
                   <h2 className="font-handwriting text-6xl text-center mb-16">{year}</h2>
