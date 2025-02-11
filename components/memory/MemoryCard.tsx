@@ -22,18 +22,12 @@ export function MemoryCard({ memory }: MemoryCardProps) {
         >
           <MemoryCardImageCarousel images={images} />
           <div className="p-4 bg-white">
-            <h3 className="font-handwriting text-xl mb-2 line-clamp-1">
-              {memory.title}
-            </h3>
-            <p className="text-sm text-muted-foreground mb-2 line-clamp-2">
-              {memory.description}
-            </p>
+            <h3 className="font-handwriting text-xl mb-2 line-clamp-1">{memory.title}</h3>
+            <p className="text-sm text-muted-foreground mb-2 line-clamp-2">{memory.description}</p>
             <div className="flex justify-between items-center text-xs text-muted-foreground">
               <div className="flex items-center">
                 <MapPin className="w-3 h-3 mr-1" />
-                <span className="line-clamp-1">
-                  {memory.location || "Unknown location"}
-                </span>
+                <span className="line-clamp-1">{memory.location || "Unknown location"}</span>
               </div>
               <div>
                 {new Date(memory.date).toLocaleDateString("en-US", {
@@ -46,11 +40,7 @@ export function MemoryCard({ memory }: MemoryCardProps) {
           </div>
         </div>
       </div>
-      <MemoryDetailModal
-        memory={memory}
-        isOpen={isDetailOpen}
-        onClose={() => setIsDetailOpen(false)}
-      />
+      <MemoryDetailModal memory={memory} isOpen={isDetailOpen} onClose={() => setIsDetailOpen(false)} />
     </>
   );
 }

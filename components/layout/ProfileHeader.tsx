@@ -68,7 +68,7 @@ export function ProfileHeader({ user, onSort, onFilter, onAddMemory, onClearFilt
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <h1 className="text-2xl font-semibold text-gray-800">{user.name}</h1>
-              <p className="text-sm text-gray-600 mt-1 max-w-2xl">{user.bio || "No bio available"}</p>
+              <p className="text-sm text-gray-600 mt-1 max-w-1xl">{user.bio || "No bio available"}</p>
             </div>
 
             <div className="flex items-center gap-2 shrink-0">
