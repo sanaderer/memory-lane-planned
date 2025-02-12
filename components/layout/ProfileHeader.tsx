@@ -71,8 +71,16 @@ export function ProfileHeader({ user, onSort, onFilter, onAddMemory, onClearFilt
               <p className="text-sm text-gray-600 mt-1 max-w-1xl">{user.bio || "No bio available"}</p>
             </div>
 
-            <div className="flex items-center gap-2 shrink-0">
-              <div className="bg-white/80 rounded-lg p-1 shadow-sm flex items-center gap-2">
+            <div className="flex items-center justify-between w-full sm:justify-end sm:w-auto gap-2 shrink-0">
+              <Button
+                onClick={onAddMemory}
+                className="sm:order-2 bg-black hover:bg-stone-800 text-white shadow-sm transition-all duration-200 h-9 px-4"
+              >
+                <Plus className="h-4 w-4 mr-2" />
+                New Memory
+              </Button>
+
+              <div className="sm:order-1 bg-white/80 rounded-lg shadow-sm flex items-center gap-2">
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button variant="ghost" size="icon" className="h-9 w-9 hover:bg-gray-100/80">
@@ -127,15 +135,6 @@ export function ProfileHeader({ user, onSort, onFilter, onAddMemory, onClearFilt
                   {isSharing ? <Check className="h-4 w-4" /> : <Share2 className="h-4 w-4 text-gray-600" />}
                 </Button>
               </div>
-
-              <Button
-                onClick={onAddMemory}
-                className="bg-black hover:bg-stone-800 text-white shadow-sm transition-all duration-200"
-                size="sm"
-              >
-                <Plus className="h-4 w-4 mr-2" />
-                New Memory
-              </Button>
             </div>
           </div>
         </div>

@@ -98,13 +98,13 @@ export function MemoryDetailModal({ memory, isOpen, onClose }: MemoryDetailModal
           }
         }}
       >
-        <DialogContent className="sm:max-w-[600px]">
+        <DialogContent className="sm:max-w-[425px] w-[90vw] max-h-[80vh] overflow-y-auto p-4 my-4">
           <DialogHeader>
-            <DialogTitle>{isEditing && "Edit Memory"}</DialogTitle>
+            <DialogTitle className="text-lg">{isEditing && "Edit Memory"}</DialogTitle>
           </DialogHeader>
 
           {isEditing ? (
-            <div className="space-y-4">
+            <div className="space-y-3">
               <Input
                 value={editedMemory.title}
                 onChange={(e) => setEditedMemory({ ...editedMemory, title: e.target.value })}
@@ -132,7 +132,7 @@ export function MemoryDetailModal({ memory, isOpen, onClose }: MemoryDetailModal
               />
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-3">
               <MemoryCardImageCarousel images={memory.image_url ? [memory.image_url] : []} />
               <h3 className="text-2xl font-semibold">{memory.title}</h3>
               <p className="text-muted-foreground">{memory.description}</p>
@@ -153,20 +153,22 @@ export function MemoryDetailModal({ memory, isOpen, onClose }: MemoryDetailModal
             </div>
           )}
 
-          <DialogFooter>
+          <DialogFooter className="flex flex-row space-x-2 mt-4">
             {isEditing ? (
               <>
-                <Button variant="outline" onClick={handleCancelEdit}>
+                <Button variant="outline" onClick={handleCancelEdit} className="flex-1">
                   <X className="h-4 w-4 mr-1" /> Cancel
                 </Button>
-                <Button onClick={handleSaveEdit}>Save Changes</Button>
+                <Button onClick={handleSaveEdit} className="flex-1">
+                  Save Changes
+                </Button>
               </>
             ) : (
               <>
-                <Button variant="outline" onClick={() => setIsEditing(true)}>
+                <Button variant="outline" onClick={() => setIsEditing(true)} className="flex-1">
                   <Edit className="h-4 w-4 mr-1" /> Edit
                 </Button>
-                <Button variant="destructive" onClick={() => setIsConfirmingDelete(true)}>
+                <Button variant="destructive" onClick={() => setIsConfirmingDelete(true)} className="flex-1">
                   <Trash className="h-4 w-4 mr-2" /> Delete
                 </Button>
               </>

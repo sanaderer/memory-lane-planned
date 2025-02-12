@@ -36,18 +36,18 @@ export function MemoriesList({ memories }: MemoriesListProps) {
             <Skeleton className="w-full h-48" />
             <div className="container mx-auto px-4">
               <div className="relative -mt-16 pb-6">
-                <div className="flex justify-between">
-                  <div className="flex flex-col items-start space-y-4">
+                <div className="flex flex-col sm:flex-row sm:justify-between">
+                  <div className="flex flex-col items-center sm:items-start space-y-4">
                     <Skeleton className="h-32 w-32 rounded-full border-4 border-background" />
                     <div className="space-y-2">
                       <Skeleton className="h-8 w-48" />
                       <Skeleton className="h-4 w-32" />
                     </div>
                   </div>
-                  <div className="flex gap-4 self-end mb-2">
-                    <Skeleton className="h-10 w-24" />
-                    <Skeleton className="h-10 w-24" />
-                    <Skeleton className="h-10 w-32" />
+                  <div className="flex gap-2 sm:gap-4 self-center sm:self-end mt-4 sm:mt-0 sm:mb-2">
+                    <Skeleton className="h-10 w-20 sm:w-24" />
+                    <Skeleton className="h-10 w-20 sm:w-24" />
+                    <Skeleton className="h-10 w-24 sm:w-32" />
                   </div>
                 </div>
               </div>

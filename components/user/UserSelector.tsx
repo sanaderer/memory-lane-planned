@@ -13,7 +13,6 @@ interface UserSelectionProps {
   initialUsers: User[];
 }
 
-
 export function UserSelection({ initialUsers }: UserSelectionProps) {
   const router = useRouter();
   const { currentUser, setCurrentUser, setAllUsers } = useUserStore();
@@ -68,19 +67,19 @@ export function UserSelection({ initialUsers }: UserSelectionProps) {
                 <Button
                   variant="outline"
                   className={cn(
-                    "w-full h-full aspect-square flex flex-col items-center justify-center p-6 rounded-2xl transition-all duration-300",
+                    "w-full h-full aspect-[3/4] flex flex-col items-center justify-center p-8 rounded-2xl transition-all duration-300",
                     "hover:shadow-lg hover:scale-105 hover:bg-white",
                     "border border-gray-200",
                     currentUser?.id === user.id && "bg-white ring-2 ring-black ring-offset-2"
                   )}
                   onClick={() => handleUserSelect(user)}
                 >
-                  <div className="relative w-32 h-32 mb-6">
+                  <div className="relative w-28 h-28 sm:w-36 sm:h-36 mb-6 rounded-full overflow-hidden flex items-center justify-center">
                     <Image
                       src={user.avatar || "/placeholder.svg"}
                       alt={user.name}
                       fill
-                      className="rounded-full object-cover ring-4 ring-gray-50"
+                      className="rounded-full object-cover object-center"
                       priority
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
