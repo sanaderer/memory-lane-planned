@@ -100,7 +100,7 @@ export function MemoryDetailModal({ memory, isOpen, onClose }: MemoryDetailModal
       >
         <DialogContent className="sm:max-w-[600px]">
           <DialogHeader>
-            <DialogTitle>{isEditing ? "Edit Memory" : "Memory Details"}</DialogTitle>
+            <DialogTitle>{isEditing && "Edit Memory"}</DialogTitle>
           </DialogHeader>
 
           {isEditing ? (

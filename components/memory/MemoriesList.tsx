@@ -71,7 +71,7 @@ export function MemoriesList({ memories }: MemoriesListProps) {
                           <Skeleton className="aspect-[16/9] w-full" />
                           <div className="p-4">
                             <Skeleton className="h-7 w-4/5 mb-3" />
-                            <div className="space-y-2 mb-4">
+                            <div className="space-y-2 mb-w">
                               <Skeleton className="h-4 w-full" />
                               <Skeleton className="h-4 w-4/5" />
                             </div>

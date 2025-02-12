@@ -13,6 +13,7 @@ interface UserSelectionProps {
   initialUsers: User[];
 }
 
+
 export function UserSelection({ initialUsers }: UserSelectionProps) {
   const router = useRouter();
   const { currentUser, setCurrentUser, setAllUsers } = useUserStore();
@@ -32,21 +33,31 @@ export function UserSelection({ initialUsers }: UserSelectionProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-4xl">
-        <motion.h1
-          className="text-4xl font-bold text-center mb-12 text-gray-800"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Choose Your Profile
-        </motion.h1>
+    <div className="min-h-screen bg-white p-4 flex items-center justify-center">
+      <div className="w-full max-w-5xl mx-auto">
+        <div className="mb-12 text-center">
+          <motion.h1
+            className={`text-6xl text-gray-900 mb-4 font-handwriting`}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Welcome to Memory Lane
+          </motion.h1>
+          <motion.p
+            className="text-lg text-gray-600 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Your personal space to capture and share life&apos;s precious moments. Select your profile to continue your journey.
+          </motion.p>
+        </div>
 
         {initialUsers.length === 0 ? (
           <p className="text-center text-gray-500">No users found.</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
             {initialUsers.map((user, index) => (
               <motion.div
                 key={user.id}
@@ -82,7 +93,7 @@ export function UserSelection({ initialUsers }: UserSelectionProps) {
         )}
 
         <motion.div
-          className="mt-12 flex justify-center"
+          className="mt-10 flex justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
@@ -91,12 +102,12 @@ export function UserSelection({ initialUsers }: UserSelectionProps) {
             onClick={handleContinue}
             disabled={!currentUser}
             className={cn(
-              "px-12 py-6 text-lg font-medium rounded-xl transition-all duration-300",
-              "hover:scale-105 hover:shadow-lg",
+              "px-8 py-4 text-base font-medium rounded-xl transition-all duration-300",
+              "hover:scale-102 hover:shadow-lg",
               !currentUser ? "bg-gray-200 text-gray-400" : "bg-black text-white hover:bg-gray-900"
             )}
           >
-            Continue
+            Continue to Your Lane
           </Button>
         </motion.div>
       </div>

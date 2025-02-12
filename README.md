@@ -35,6 +35,17 @@ Memory Lane is a web application designed to help users create, store, and share
 
 - **Supabase (Postgres & Storage)**: Selected for its ease of use, scalability, and native support for Postgres and file storage.
 
+## Future Improvements
+
+While the current implementation covers the core functionality, there are several enhancements that could be introduced:
+
+- **Multiple Image Uploads**: Currently, only one image is supported per memory. Adding support for multiple images would improve the experience.
+- **Infinite Scrolling/Pagination**: Instead of loading all memories at once, implementing infinite scrolling or pagination would improve performance.
+- **User Authentication & Privacy Controls**: Right now, any user can access memory lanes. In the future, adding authentication and privacy settings would enable users to manage public and private lanes.
+- **Social Features**: Features like liking or commenting on memories could improve user engagement.
+- **Improved Design & UX Enhancements**: Adding animations, transitions, and other visual enhancements would improve the user experience.
+
+
 ## Installation & Running the Project
 
 1. Clone this repository:
