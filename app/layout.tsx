@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <title>Memory Lane</title>
         <meta name="description" content="Capture and relive your precious moments" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:image" content="/preview.png" />
+        <meta property="og:image" content="/public/preview.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
