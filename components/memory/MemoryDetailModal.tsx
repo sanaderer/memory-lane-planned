@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -21,6 +21,13 @@ export function MemoryDetailModal({ memory, isOpen, onClose }: MemoryDetailModal
   const { editedMemory, setEditedMemory, isEditing, setIsEditing } = useMemoryEdit(memory);
   const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
   const { toast } = useToast();
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsEditing(false);
+      setEditedMemory(memory);
+    }
+  }, [isOpen, setIsEditing, setEditedMemory, memory]);
 
   const handleSaveEdit = async () => {
     try {
@@ -83,7 +90,14 @@ export function MemoryDetailModal({ memory, isOpen, onClose }: MemoryDetailModal
 
   return (
     <>
-      <Dialog open={isOpen} onOpenChange={onClose}>
+      <Dialog
+        open={isOpen}
+        onOpenChange={(open) => {
+          if (!open) {
+            onClose();
+          }
+        }}
+      >
         <DialogContent className="sm:max-w-[600px]">
           <DialogHeader>
             <DialogTitle>{isEditing ? "Edit Memory" : "Memory Details"}</DialogTitle>
@@ -155,7 +169,6 @@ export function MemoryDetailModal({ memory, isOpen, onClose }: MemoryDetailModal
                 <Button variant="destructive" onClick={() => setIsConfirmingDelete(true)}>
                   <Trash className="h-4 w-4 mr-2" /> Delete
                 </Button>
-                <Button onClick={onClose}>Close</Button>
               </>
             )}
           </DialogFooter>

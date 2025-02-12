@@ -13,6 +13,13 @@ export function MemoryCard({ memory }: MemoryCardProps) {
 
   const images = memory.image_url ? [memory.image_url] : [];
 
+  const formattedDate = new Date(memory.date).toLocaleString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+
   return (
     <>
       <div className="flex items-center justify-center min-h-[500px]">
@@ -30,11 +37,7 @@ export function MemoryCard({ memory }: MemoryCardProps) {
                 <span className="line-clamp-1">{memory.location || "Unknown location"}</span>
               </div>
               <div>
-                {new Date(memory.date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "short",
-                  day: "numeric",
-                })}
+                {formattedDate}
               </div>
             </div>
           </div>
