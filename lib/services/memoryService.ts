@@ -88,14 +88,19 @@ export async function createMemory(memory: Memory, password: string) {
     throw new Error("Invalid password");
   }
 
-  const { error } = await supabase.from("memories").insert(memory);
+  try {
+    const { error } = await supabase.from("memories").insert(memory);
 
-  if (error) {
-    console.error("Error creating memory:", error.message);
-    throw new Error(error.message);
+    if (error) {
+      console.error("Error creating memory:", error.message);
+      throw new Error(error.message);
+    }
+
+    revalidatePath(`/users/`);
+
+    return true;
+  } catch (err) {
+    console.error("Unexpected error creating memory:", err);
+    throw new Error("Failed to create memory. Please try again later.");
   }
-
-  revalidatePath(`/users/`);
-
-  return true;
 }
