@@ -3,6 +3,9 @@
 import { supabase } from "@/lib/supabase/supabase";
 import { Memory } from "@/types";
 import { revalidatePath } from "next/cache";
+import { config } from "dotenv";
+
+config();
 
 type FilterType = "all" | "thisYear" | "lastYear";
 type SortType = "newest" | "oldest";
@@ -72,8 +75,12 @@ export async function getMemoriesByUser(
   );
 }
 
-export async function deleteMemory(memoryId: string) {
+export async function deleteMemory(memoryId: string, password: string) {
   if (!memoryId) throw new Error("Memory ID is required");
+
+  if (password !== process.env.DELETE_CONFIRM_PASSWORD) {
+    throw new Error("Invalid password");
+  }
 
   const { error } = await supabase.from("memories").delete().eq("id", memoryId);
 

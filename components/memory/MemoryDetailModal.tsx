@@ -74,8 +74,19 @@ export function MemoryDetailModal({ memory, isOpen, onClose }: MemoryDetailModal
   };
 
   const handleDelete = async () => {
+    const password = prompt("Please enter the password to confirm deletion:");
+
+    if (!password) {
+      toast({
+        title: "Error",
+        description: "Password is required to delete the memory.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     try {
-      await deleteMemory(memory.id);
+      await deleteMemory(memory.id, password);
       toast({ title: "Memory deleted", description: "Successfully deleted." });
 
       onClose();
