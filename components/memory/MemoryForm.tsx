@@ -74,6 +74,14 @@ export function MemoryForm({ onClose }: MemoryFormProps) {
     setLoading(true);
     setError(null);
 
+    const password = prompt("Please enter the password to create a memory:");
+
+    if (!password) {
+      setError("Password is required to create a memory.");
+      setLoading(false);
+      return;
+    }
+
     if (!formData.title.trim() || !formData.description.trim() || !formData.date || !formData.location.trim()) {
       setError("All fields are required.");
       setLoading(false);
@@ -99,7 +107,12 @@ export function MemoryForm({ onClose }: MemoryFormProps) {
         created_at: new Date().toISOString(),
       };
 
-      await createMemory(newMemory);
+      const memoryWithId = {
+        ...newMemory,
+        id: crypto.randomUUID()
+      };
+
+      await createMemory(memoryWithId, password);
 
       resetForm();
       if (onClose) onClose();
